@@ -1,0 +1,11 @@
+Requirement-ID;Requirement;Status (umgesetzt/teilweise/nicht umgesetzt);Ort/Datei/URL;Test-ID;Kommentar
+GEN-01;"Mindestens zwei sinnvoll verknüpfte HTML-Seiten	";Umgesetzt;index.html, about.html;T-03;Home und About sind über die Navigation erreichbar.
+GEN-02;Externe gemeinsame CSS-Datei;Umgesetzt;style.css;T-03;Beide HTML-Seiten verwenden dieselbe CSS-Datei.
+GEN-03;Mindestens ein Nutzer-Event mit JavaScript-Logik;Umgesetzt;script.js;T-01;Suche über Button und Enter-Taste.
+GEN-04;Mindestens ein externer API-Request mit fetch();Umgesetzt;script.js;T-01, T-02;"Open Library API; Suchbegriff und Ergebnislimit sind dynamisch."
+GEN-05;JSON-Antwort wird verarbeitet und relevante Felder werden extrahiert;Umgesetzt;script.js;T-02;Titel, Autor, Erscheinungsjahr, Editionen und Cover-ID werden verarbeitet.
+GEN-06;Daten werden als dynamische HTML-Elemente dargestellt;Umgesetzt;script.js, style.css;T-02;Buchinformationen werden als dynamische Karten im Raster angezeigt.
+GEN-07;Lade-/Leer-/Fehlerzustand wird verständlich behandelt;Umgesetzt;script.js;T-04, T-05, T-07;"Ladeanzeige, leere Eingabe, keine Treffer und allgemeine Fehlerbehandlung vorhanden; "
+GEN-08;Öffentliches Git-Repository mit mindestens fünf sinnvollen Commits;Umgesetzt;GitHub: book-finder;-;Laut bisherigem Entwicklungsverlauf wurden mindestens fünf Commits geplant bzw. erstellt.
+GEN-09;README.md mit Projekt-, API-, Testing- und Known-Issues-Dokumentation;Umgesetzt;README.md;-;Dokumentation fertiggestellen.
+GEN-10;Finale Version auf eigener Legacy-Subdomain öffentlich erreichbar;Nicht umgesetzt;Legacy-Subdomain;-;
