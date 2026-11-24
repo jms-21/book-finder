@@ -1,9 +1,11 @@
 const searchInput = document.getElementById("searchInput");
 const searchButton = document.getElementById("searchButton");
 const bookResults = document.getElementById("bookResults");
+const resultLimit = document.getElementById("resultLimit");
 
 async function searchBooks() {
     const searchTerm = searchInput.value.trim();
+    const limit = resultLimit.value;
 
     if (searchTerm === "") {
         bookResults.textContent = "Please enter a search term.";
@@ -14,7 +16,7 @@ async function searchBooks() {
 
     try {
         const response = await fetch(
-            `https://openlibrary.org/search.json?q=${encodeURIComponent(searchTerm)}&limit=8`
+            `https://openlibrary.org/search.json?q=${encodeURIComponent(searchTerm)}&limit=${limit}`
         );
 
         if (!response.ok) {
@@ -33,7 +35,17 @@ async function searchBooks() {
 
     const resultCount = document.createElement("p");
     resultCount.textContent = `${data.numFound} books found`;
-    bookResults.appendChild(resultCount);
+
+    const displayedCount = document.createElement("p");
+    displayedCount.textContent = `Showing ${data.docs.length} books`;
+
+    const resultInfo = document.createElement("div");
+    resultInfo.className = "result-info";
+
+    resultInfo.appendChild(resultCount);
+    resultInfo.appendChild(displayedCount);
+
+    bookResults.appendChild(resultInfo);
 
     data.docs.forEach(book => {
         const bookCard = document.createElement("div");

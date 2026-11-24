@@ -21,10 +21,20 @@
         <h2>Find your next book</h2>
         <p>Search for books by title or keyword.</p>
 
-        <div>
-            <input type="text" id="searchInput" placeholder="Enter a book title...">
-            <button id="searchButton">Search</button>
-        </div>
+    <div>
+        <input type="text" id="searchInput" value="javascript" placeholder="Enter a book title...">
+
+        <button id="searchButton">Search</button>
+
+        <select id="resultLimit">
+            <option value="4">4 books</option>
+            <option value="8" selected>8 books</option>
+            <option value="12">12 books</option>
+            <option value="20">20 books</option>
+        </select>
+
+
+    </div>
 
         <section>
             <h2>Search Results</h2>
