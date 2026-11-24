@@ -23,13 +23,48 @@ async function searchBooks() {
 
         const data = await response.json();
 
-        bookResults.innerHTML = "";
+        
+    bookResults.innerHTML = "";
 
-        data.docs.forEach(book => {
-            const bookItem = document.createElement("p");
-            bookItem.textContent = book.title;
-            bookResults.appendChild(bookItem);
-        });
+    if (data.docs.length === 0) {
+        bookResults.textContent = "No books found.";
+        return;
+    }
+
+    const resultCount = document.createElement("p");
+    resultCount.textContent = `${data.numFound} books found`;
+    bookResults.appendChild(resultCount);
+
+    data.docs.forEach(book => {
+        const bookCard = document.createElement("div");
+        bookCard.className = "book-card";
+
+        if (book.cover_i) {
+            const cover = document.createElement("img");
+            cover.src = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+            cover.alt = `Cover of ${book.title}`;
+            bookCard.appendChild(cover);
+        }
+
+        const title = document.createElement("h3");
+        title.textContent = book.title || "Unknown title";
+        bookCard.appendChild(title);
+
+        const author = document.createElement("p");
+        author.textContent = `Author: ${book.author_name?.join(", ") || "Unknown author"}`;
+        bookCard.appendChild(author);
+
+        const year = document.createElement("p");
+        year.textContent = `First published: ${book.first_publish_year || "Unknown"}`;
+        bookCard.appendChild(year);
+
+        const editions = document.createElement("p");
+        editions.textContent = `Editions: ${book.edition_count ?? "Unknown"}`;
+        bookCard.appendChild(editions);
+
+        bookResults.appendChild(bookCard);
+    });
+
 
         if (data.docs.length === 0) {
             bookResults.textContent = "No books found.";
